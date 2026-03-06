@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["sin1"],
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "redirects": [
+    {
+      "source": "/rss",
+      "destination": "/feed.xml",
+      "permanent": true
+    }
+  ]
+}

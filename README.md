@@ -1,55 +1,55 @@
-# Fly High English — Marketing Site
+# Personal Blog - Production Ready Setup
 
-Single-page marketing site for **Fly High English**, Trà Vinh.
-
-## Project Structure
-
-```
-flyhigh-english/
-├── index.html          # Main page (links to CSS & JS externally)
-├── css/
-│   └── styles.css      # Custom CSS (design tokens, components)
-├── js/
-│   └── main.js         # All JavaScript (modals, forms, nav, UTMs)
-└── assets/
-    ├── images/         # Place teacher photo + og-image here
-    └── icons/          # Favicon, app icons
-```
+Đây là template Next.js 15 được setup sẵn cho một blog cá nhân với các công nghệ backend & frontend hiện đại.
 
 ## Tech Stack
 
-| Layer  | Technology                       |
-|--------|----------------------------------|
-| HTML   | Semantic HTML5                   |
-| CSS    | Tailwind CDN + custom `styles.css` |
-| JS     | Vanilla JS (`main.js`)           |
-| Fonts  | Google Fonts (Inter + Playfair)  |
-| Maps   | Google Maps Embed                |
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript (Strict Mode)
+- **Styling:** Tailwind CSS v4
+- **Linting & Formatting:** ESLint (Flat Config) & Prettier
+- **Git Hooks:** Husky & lint-staged
 
-> **No build step required.** Works with any static host.
+## Folder Structure
 
-## Deploying
+\`\`\`text
+/
+├── app/ # App Router pages & layouts
+├── components/ # React components (ui, layouts, etc.)
+├── config/ # App configuration, site data
+├── content/ # Markdown/MDX files for blog posts
+├── hooks/ # Custom React hooks
+├── lib/ # Utility functions
+├── public/ # Static assets (images, fonts, etc.)
+├── types/ # TypeScript type definitions
+└── ...config files # ESLint, Prettier, Tailwind, Next.js configs
+\`\`\`
 
-### Netlify (drag & drop)
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop)
-2. Drag the `flyhigh-english/` folder
-3. Done — live URL generated instantly
+## Getting Started
 
-### Vercel (via CLI)
-```bash
-npm i -g vercel
-cd flyhigh-english
-vercel
-```
+1. Set up môi trường:
+   \`\`\`bash
+   npm run setup
+   \`\`\`
+   _(Lệnh này sẽ cài đặt node_modules, setup Husky hooks)_
 
-### GitHub Pages
-Push to a repo, enable **Settings → Pages → Deploy from branch (main / root)**.
+2. Khởi tạo Git (nếu chưa có):
+   \`\`\`bash
+   git init
+   npm run prepare
+   \`\`\`
 
-## Customisation Checklist
+3. Copy môi trường:
+   \`\`\`bash
+   cp .env.example .env.local
+   \`\`\`
 
-- [ ] Replace the SVG avatar in `#teacher` with `<img src="assets/images/teacher.jpg" alt="...">` 
-- [ ] Add real `og:image` at `assets/images/og-image.jpg` and uncomment the meta tag
-- [ ] Add favicon: `<link rel="icon" href="assets/icons/favicon.ico">`
-- [ ] Add GA4 tag: replace `<!-- GA4 -->` placeholder in `<head>` with your gtag snippet
-- [ ] Wire the form `<form>` action to a real endpoint (Formspree, Netlify Forms, your API)
-- [ ] Update `og:url` / `canonical` with the final domain
+4. Chạy development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+## Lưu ý về Tailwind CSS v4
+
+Tailwind CSS v4 đã chuyển sang cấu hình trực tiếp bằng CSS (CSS-first variable config) và import thông qua `@import "tailwindcss";` trong `app/globals.css`. Do đó, file `tailwind.config.ts` sẽ không có mặt theo default vì hệ thống sử dụng vite/postcss plugin mới.
+Đã thêm config cho Prettier để hỗ trợ sort Tailwind classes.
